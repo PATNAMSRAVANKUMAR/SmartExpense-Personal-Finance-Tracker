@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { TransactionProvider } from './context/TransactionContext';
 import Navbar from './components/Navbar';
 import NotificationToast from './components/NotificationToast';
@@ -11,7 +11,7 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <TransactionProvider>
         <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
           <Navbar />
@@ -40,7 +40,7 @@ function App() {
           <NotificationToast />
         </div>
       </TransactionProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
