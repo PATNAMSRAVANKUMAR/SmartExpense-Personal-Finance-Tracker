@@ -135,21 +135,21 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Transaction Type Segmented Toggle */}
       <div>
-        <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+        <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
           Transaction Type <span className="text-rose-500">*</span>
         </label>
-        <div className="grid grid-cols-2 gap-3 p-1 bg-slate-100 rounded-2xl border border-slate-200">
+        <div className="grid grid-cols-2 gap-3 p-1 bg-slate-100 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700/80">
           <button
             type="button"
             onClick={() => handleTypeChange('Expense')}
             className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-sm transition-all ${
               formData.type === 'Expense'
-                ? 'bg-white text-rose-600 shadow-sm border border-slate-200'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-white dark:bg-slate-700 text-rose-600 dark:text-rose-400 shadow-sm border border-slate-200 dark:border-slate-600'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            <div className={`p-1 rounded-lg ${formData.type === 'Expense' ? 'bg-rose-50' : ''}`}>
-              <ArrowDownRight className="w-4 h-4 text-rose-600" />
+            <div className={`p-1 rounded-lg ${formData.type === 'Expense' ? 'bg-rose-50 dark:bg-rose-950/60' : ''}`}>
+              <ArrowDownRight className="w-4 h-4 text-rose-600 dark:text-rose-400" />
             </div>
             <span>Expense</span>
           </button>
@@ -159,18 +159,18 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
             onClick={() => handleTypeChange('Income')}
             className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-sm transition-all ${
               formData.type === 'Income'
-                ? 'bg-white text-teal-600 shadow-sm border border-slate-200'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-white dark:bg-slate-700 text-teal-600 dark:text-teal-400 shadow-sm border border-slate-200 dark:border-slate-600'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            <div className={`p-1 rounded-lg ${formData.type === 'Income' ? 'bg-teal-50' : ''}`}>
-              <ArrowUpRight className="w-4 h-4 text-teal-600" />
+            <div className={`p-1 rounded-lg ${formData.type === 'Income' ? 'bg-teal-50 dark:bg-teal-950/60' : ''}`}>
+              <ArrowUpRight className="w-4 h-4 text-teal-600 dark:text-teal-400" />
             </div>
             <span>Income</span>
           </button>
         </div>
         {errors.type && (
-          <p className="mt-1.5 text-xs text-rose-600 flex items-center gap-1">
+          <p className="mt-1.5 text-xs text-rose-600 dark:text-rose-400 flex items-center gap-1">
             <AlertCircle className="w-3.5 h-3.5" /> {errors.type}
           </p>
         )}
@@ -180,7 +180,7 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         {/* Title */}
         <div>
-          <label htmlFor="title" className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+          <label htmlFor="title" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
             Title / Payee <span className="text-rose-500">*</span>
           </label>
           <input
@@ -190,14 +190,14 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
             placeholder={formData.type === 'Income' ? 'e.g., Client Invoice, Monthly Salary' : 'e.g., Grocery Store, Coffee, Rent'}
             value={formData.title}
             onChange={handleChange}
-            className={`w-full px-4 py-2.5 rounded-xl border text-sm transition-all ${
+            className={`w-full px-4 py-2.5 rounded-xl border text-sm transition-all text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 ${
               errors.title
-                ? 'border-rose-300 bg-rose-50/30 focus:ring-rose-400 focus:border-rose-400'
-                : 'border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent'
+                ? 'border-rose-300 dark:border-rose-800 bg-rose-50/30 dark:bg-rose-950/30 focus:ring-rose-400 focus:border-rose-400'
+                : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-emerald-500 focus:border-transparent'
             }`}
           />
           {errors.title && (
-            <p className="mt-1.5 text-xs text-rose-600 flex items-center gap-1">
+            <p className="mt-1.5 text-xs text-rose-600 dark:text-rose-400 flex items-center gap-1">
               <AlertCircle className="w-3.5 h-3.5" /> {errors.title}
             </p>
           )}
@@ -205,11 +205,11 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
 
         {/* Amount */}
         <div>
-          <label htmlFor="amount" className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+          <label htmlFor="amount" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
             Amount ($) <span className="text-rose-500">*</span>
           </label>
           <div className="relative">
-            <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 font-bold text-sm">
+            <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 dark:text-slate-500 font-bold text-sm">
               $
             </span>
             <input
@@ -221,15 +221,15 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
               placeholder="0.00"
               value={formData.amount}
               onChange={handleChange}
-              className={`w-full pl-8 pr-4 py-2.5 rounded-xl border text-sm font-semibold transition-all ${
+              className={`w-full pl-8 pr-4 py-2.5 rounded-xl border text-sm font-semibold transition-all text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 ${
                 errors.amount
-                  ? 'border-rose-300 bg-rose-50/30 focus:ring-rose-400 focus:border-rose-400'
-                  : 'border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent'
+                  ? 'border-rose-300 dark:border-rose-800 bg-rose-50/30 dark:bg-rose-950/30 focus:ring-rose-400 focus:border-rose-400'
+                  : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-emerald-500 focus:border-transparent'
               }`}
             />
           </div>
           {errors.amount && (
-            <p className="mt-1.5 text-xs text-rose-600 flex items-center gap-1">
+            <p className="mt-1.5 text-xs text-rose-600 dark:text-rose-400 flex items-center gap-1">
               <AlertCircle className="w-3.5 h-3.5" /> {errors.amount}
             </p>
           )}
@@ -240,7 +240,7 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         {/* Category */}
         <div>
-          <label htmlFor="category" className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+          <label htmlFor="category" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
             Category <span className="text-rose-500">*</span>
           </label>
           <select
@@ -248,10 +248,10 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className={`w-full px-4 py-2.5 rounded-xl border text-sm font-medium bg-white transition-all cursor-pointer ${
+            className={`w-full px-4 py-2.5 rounded-xl border text-sm font-medium transition-all cursor-pointer text-slate-900 dark:text-white [&>option]:bg-white dark:[&>option]:bg-slate-800 ${
               errors.category
-                ? 'border-rose-300 bg-rose-50/30 focus:ring-rose-400'
-                : 'border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent'
+                ? 'border-rose-300 dark:border-rose-800 bg-rose-50/30 dark:bg-rose-950/30 focus:ring-rose-400'
+                : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-emerald-500 focus:border-transparent'
             }`}
           >
             {availableCategories.map((cat) => (
@@ -261,7 +261,7 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
             ))}
           </select>
           {errors.category && (
-            <p className="mt-1.5 text-xs text-rose-600 flex items-center gap-1">
+            <p className="mt-1.5 text-xs text-rose-600 dark:text-rose-400 flex items-center gap-1">
               <AlertCircle className="w-3.5 h-3.5" /> {errors.category}
             </p>
           )}
@@ -269,7 +269,7 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
 
         {/* Date */}
         <div>
-          <label htmlFor="date" className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+          <label htmlFor="date" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
             Date <span className="text-rose-500">*</span>
           </label>
           <input
@@ -278,14 +278,14 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
             type="date"
             value={formData.date}
             onChange={handleChange}
-            className={`w-full px-4 py-2.5 rounded-xl border text-sm font-medium transition-all ${
+            className={`w-full px-4 py-2.5 rounded-xl border text-sm font-medium transition-all text-slate-900 dark:text-white [color-scheme:light] dark:[color-scheme:dark] ${
               errors.date
-                ? 'border-rose-300 bg-rose-50/30 focus:ring-rose-400'
-                : 'border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent'
+                ? 'border-rose-300 dark:border-rose-800 bg-rose-50/30 dark:bg-rose-950/30 focus:ring-rose-400'
+                : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-emerald-500 focus:border-transparent'
             }`}
           />
           {errors.date && (
-            <p className="mt-1.5 text-xs text-rose-600 flex items-center gap-1">
+            <p className="mt-1.5 text-xs text-rose-600 dark:text-rose-400 flex items-center gap-1">
               <AlertCircle className="w-3.5 h-3.5" /> {errors.date}
             </p>
           )}
@@ -294,8 +294,8 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
 
       {/* Description / Notes (Optional) */}
       <div>
-        <label htmlFor="description" className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-          Description / Notes <span className="text-slate-400 font-normal lowercase">(optional)</span>
+        <label htmlFor="description" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+          Description / Notes <span className="text-slate-400 dark:text-slate-500 font-normal lowercase">(optional)</span>
         </label>
         <textarea
           id="description"
@@ -304,7 +304,7 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
           placeholder="Add any extra notes or memo for this transaction..."
           value={formData.description}
           onChange={handleChange}
-          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
         />
       </div>
 
@@ -313,7 +313,7 @@ const TransactionForm = ({ initialData = null, isEdit = false }) => {
         <button
           type="button"
           onClick={() => navigate(-1)}
-          className="px-5 py-2.5 rounded-xl text-sm font-semibold border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors flex items-center gap-2"
+          className="px-5 py-2.5 rounded-xl text-sm font-semibold border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Cancel</span>

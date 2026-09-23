@@ -30,10 +30,10 @@ const TransactionTable = ({
 
   if (loading) {
     return (
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
         <div className="space-y-4">
           {[1, 2, 3, 4, 5].map((i) => (
-            <div key={i} className="h-12 bg-slate-100 animate-pulse rounded-xl" />
+            <div key={i} className="h-12 bg-slate-100 dark:bg-slate-800 animate-pulse rounded-xl" />
           ))}
         </div>
       </div>
@@ -42,12 +42,12 @@ const TransactionTable = ({
 
   if (!transactions || transactions.length === 0) {
     return (
-      <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-4">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-12 text-center shadow-sm">
+        <div className="w-16 h-16 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-4">
           <AlertCircle className="w-8 h-8" />
         </div>
-        <h3 className="text-lg font-bold text-slate-800">No Transactions Found</h3>
-        <p className="text-sm text-slate-500 max-w-sm mx-auto mt-1 mb-6">
+        <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">No Transactions Found</h3>
+        <p className="text-sm text-slate-500 dark:text-slate-400 max-w-sm mx-auto mt-1 mb-6">
           No records match your active criteria. Try adjusting your filters or record a new transaction.
         </p>
         <Link
@@ -63,11 +63,11 @@ const TransactionTable = ({
 
   return (
     <>
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-slate-100 bg-slate-50/75 text-xs font-semibold uppercase text-slate-500 tracking-wider">
+              <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/75 dark:bg-slate-800/50 text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 tracking-wider">
                 <th className="py-3.5 px-4 sm:px-6">Transaction</th>
                 <th className="py-3.5 px-4">Category</th>
                 <th className="py-3.5 px-4">Date</th>
@@ -75,7 +75,7 @@ const TransactionTable = ({
                 <th className="py-3.5 px-4 sm:px-6 text-center">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-sm">
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
               {displayedTransactions.map((tx) => {
                 const isIncome = tx.type === 'Income';
                 const catColor = getCategoryColor(tx.category);
@@ -83,7 +83,7 @@ const TransactionTable = ({
                 return (
                   <tr
                     key={tx._id}
-                    className="hover:bg-slate-50/80 transition-colors group"
+                    className="hover:bg-slate-50/80 dark:hover:bg-slate-800/50 transition-colors group"
                   >
                     {/* Title and Description */}
                     <td className="py-4 px-4 sm:px-6">
@@ -91,8 +91,8 @@ const TransactionTable = ({
                         <div
                           className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${
                             isIncome
-                              ? 'bg-teal-50 text-teal-600'
-                              : 'bg-rose-50 text-rose-600'
+                              ? 'bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400'
+                              : 'bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400'
                           }`}
                         >
                           {isIncome ? (
@@ -102,11 +102,11 @@ const TransactionTable = ({
                           )}
                         </div>
                         <div className="min-w-0">
-                          <p className="font-semibold text-slate-900 truncate max-w-[180px] sm:max-w-xs">
+                          <p className="font-semibold text-slate-900 dark:text-white truncate max-w-[180px] sm:max-w-xs">
                             {tx.title}
                           </p>
                           {tx.description && (
-                            <p className="text-xs text-slate-400 truncate max-w-[180px] sm:max-w-xs mt-0.5">
+                            <p className="text-xs text-slate-400 dark:text-slate-500 truncate max-w-[180px] sm:max-w-xs mt-0.5">
                               {tx.description}
                             </p>
                           )}
@@ -132,7 +132,7 @@ const TransactionTable = ({
                     </td>
 
                     {/* Date */}
-                    <td className="py-4 px-4 whitespace-nowrap text-xs font-medium text-slate-500">
+                    <td className="py-4 px-4 whitespace-nowrap text-xs font-medium text-slate-500 dark:text-slate-400">
                       {formatDate(tx.date)}
                     </td>
 
@@ -140,7 +140,7 @@ const TransactionTable = ({
                     <td className="py-4 px-4 whitespace-nowrap text-right">
                       <span
                         className={`text-sm font-bold ${
-                          isIncome ? 'text-teal-600' : 'text-rose-600'
+                          isIncome ? 'text-teal-600 dark:text-teal-400' : 'text-rose-600 dark:text-rose-400'
                         }`}
                       >
                         {isIncome ? '+' : '-'}
@@ -154,7 +154,7 @@ const TransactionTable = ({
                         <Link
                           to={`/edit/${tx._id}`}
                           title="Edit transaction"
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 transition-colors"
+                          className="p-1.5 rounded-lg text-slate-400 dark:text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 transition-colors"
                         >
                           <Edit2 className="w-4 h-4" />
                         </Link>
@@ -162,7 +162,7 @@ const TransactionTable = ({
                           type="button"
                           title="Delete transaction"
                           onClick={() => setDeleteCandidate(tx)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors"
+                          className="p-1.5 rounded-lg text-slate-400 dark:text-slate-500 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/50 transition-colors"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -176,10 +176,10 @@ const TransactionTable = ({
         </div>
 
         {showViewAll && transactions.length > (limit || 5) && (
-          <div className="p-4 border-t border-slate-100 bg-slate-50/50 text-center">
+          <div className="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 text-center">
             <Link
               to="/transactions"
-              className="text-xs font-bold text-emerald-600 hover:text-emerald-700 hover:underline"
+              className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:underline"
             >
               View All Transactions ({transactions.length}) →
             </Link>
@@ -189,21 +189,21 @@ const TransactionTable = ({
 
       {/* Delete Confirmation Modal */}
       {deleteCandidate && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200">
-            <div className="w-12 h-12 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mx-auto mb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800">
+            <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center mx-auto mb-4">
               <Trash2 className="w-6 h-6" />
             </div>
-            <h4 className="text-base font-bold text-slate-900 text-center">Delete Transaction?</h4>
-            <p className="text-xs text-slate-500 text-center mt-2">
-              Are you sure you want to delete &quot;<span className="font-semibold text-slate-700">{deleteCandidate.title}</span>&quot; ({formatCurrency(deleteCandidate.amount)})? This action cannot be undone.
+            <h4 className="text-base font-bold text-slate-900 dark:text-white text-center">Delete Transaction?</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400 text-center mt-2">
+              Are you sure you want to delete &quot;<span className="font-semibold text-slate-700 dark:text-slate-200">{deleteCandidate.title}</span>&quot; ({formatCurrency(deleteCandidate.amount)})? This action cannot be undone.
             </p>
             <div className="mt-6 flex items-center gap-3">
               <button
                 type="button"
                 disabled={isDeleting}
                 onClick={() => setDeleteCandidate(null)}
-                className="flex-1 px-4 py-2 rounded-xl text-sm font-semibold border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors"
+                className="flex-1 px-4 py-2 rounded-xl text-sm font-semibold border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 Cancel
               </button>

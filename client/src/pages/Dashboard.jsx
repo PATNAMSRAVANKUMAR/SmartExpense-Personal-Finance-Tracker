@@ -26,10 +26,10 @@ const Dashboard = () => {
             <Sparkles className="w-3.5 h-3.5" />
             Financial Overview
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
             Financial Dashboard
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
             {todayFormatted} • Monitor your cash flow and spending trends
           </p>
         </div>
@@ -64,12 +64,12 @@ const Dashboard = () => {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">Recent Transactions</h2>
-            <p className="text-xs text-slate-500">Latest recorded income and expenses</p>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Recent Transactions</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Latest recorded income and expenses</p>
           </div>
           <Link
             to="/transactions"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-700 hover:underline"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:underline"
           >
             <span>View All</span>
             <ArrowRight className="w-3.5 h-3.5" />

@@ -5,11 +5,11 @@ import { Home, AlertTriangle } from 'lucide-react';
 const NotFound = () => {
   return (
     <div className="py-20 text-center max-w-md mx-auto">
-      <div className="w-16 h-16 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center mx-auto mb-4">
+      <div className="w-16 h-16 rounded-full bg-amber-50 dark:bg-amber-950/60 text-amber-500 dark:text-amber-400 flex items-center justify-center mx-auto mb-4">
         <AlertTriangle className="w-8 h-8" />
       </div>
-      <h2 className="text-2xl font-black text-slate-900 tracking-tight">Page Not Found</h2>
-      <p className="text-sm text-slate-500 mt-2 mb-6">
+      <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Page Not Found</h2>
+      <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 mb-6">
         The financial page or resource you are looking for does not exist or has been moved.
       </p>
       <Link

@@ -1,15 +1,16 @@
 import React from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { formatCurrency, getCategoryColor } from '../../utils/formatters';
+import { useTheme } from '../../context/ThemeContext';
 import { PieChart as PieIcon } from 'lucide-react';
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const data = payload[0];
     return (
-      <div className="bg-white p-3 rounded-xl shadow-lg border border-slate-200 text-xs">
-        <p className="font-bold text-slate-800">{data.name}</p>
-        <p className="text-rose-600 font-semibold mt-0.5">
+      <div className="bg-white dark:bg-slate-800 p-3 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 text-xs">
+        <p className="font-bold text-slate-800 dark:text-slate-100">{data.name}</p>
+        <p className="text-rose-600 dark:text-rose-400 font-semibold mt-0.5">
           {formatCurrency(data.value)} ({data.payload.percentage || 0}%)
         </p>
       </div>
@@ -19,22 +20,24 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 const ExpenseCategoryChart = ({ categoryExpenses = [], loading = false }) => {
+  const { isDark } = useTheme();
+
   if (loading) {
     return (
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm h-80 flex items-center justify-center">
-        <div className="text-slate-400 animate-pulse text-sm">Loading expense analytics...</div>
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm h-80 flex items-center justify-center">
+        <div className="text-slate-400 dark:text-slate-500 animate-pulse text-sm">Loading expense analytics...</div>
       </div>
     );
   }
 
   if (!categoryExpenses || categoryExpenses.length === 0) {
     return (
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm h-80 flex flex-col items-center justify-center text-center">
-        <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-3">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm h-80 flex flex-col items-center justify-center text-center">
+        <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 dark:text-slate-500 mb-3">
           <PieIcon className="w-6 h-6" />
         </div>
-        <h4 className="text-sm font-semibold text-slate-700">No Expenses Recorded</h4>
-        <p className="text-xs text-slate-400 mt-1 max-w-xs">
+        <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300">No Expenses Recorded</h4>
+        <p className="text-xs text-slate-400 dark:text-slate-500 mt-1 max-w-xs">
           Add expense transactions to visualize your spending breakdown by category.
         </p>
       </div>
@@ -49,13 +52,13 @@ const ExpenseCategoryChart = ({ categoryExpenses = [], loading = false }) => {
   }));
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm flex flex-col">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-sm flex flex-col">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-base font-bold text-slate-900">Expenses by Category</h3>
-          <p className="text-xs text-slate-500 mt-0.5">Distribution of all outgoing spendings</p>
+          <h3 className="text-base font-bold text-slate-900 dark:text-white">Expenses by Category</h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Distribution of all outgoing spendings</p>
         </div>
-        <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">
+        <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
           {chartData.length} Categories
         </span>
       </div>
@@ -76,7 +79,7 @@ const ExpenseCategoryChart = ({ categoryExpenses = [], loading = false }) => {
                 <Cell
                   key={`cell-${index}`}
                   fill={getCategoryColor(entry.name)}
-                  stroke="#ffffff"
+                  stroke={isDark ? '#0f172a' : '#ffffff'}
                   strokeWidth={2}
                 />
               ))}
@@ -88,7 +91,7 @@ const ExpenseCategoryChart = ({ categoryExpenses = [], loading = false }) => {
               iconType="circle"
               iconSize={8}
               formatter={(value) => (
-                <span className="text-xs text-slate-600 font-medium">{value}</span>
+                <span className="text-xs text-slate-600 dark:text-slate-400 font-medium">{value}</span>
               )}
             />
           </PieChart>

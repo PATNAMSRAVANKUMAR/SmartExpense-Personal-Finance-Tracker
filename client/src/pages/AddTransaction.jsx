@@ -10,15 +10,15 @@ const AddTransaction = () => {
           <PlusCircle className="w-3.5 h-3.5" />
           New Entry
         </div>
-        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
           Add Transaction
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
           Record a newly received income or an expense with categories and details
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
         <TransactionForm isEdit={false} />
       </div>
     </div>
