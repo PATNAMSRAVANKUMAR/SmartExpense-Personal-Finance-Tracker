@@ -13,7 +13,7 @@ const ThemeToggle = ({ className = '', showLabel = false }) => {
         isDark
           ? 'bg-slate-800 text-amber-400 hover:bg-slate-700 border border-slate-700/80 shadow-sm'
           : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200/80 shadow-sm'
-      } active:scale-95 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 ${className}`}
+      } active:scale-95 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none select-none ${className}`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
